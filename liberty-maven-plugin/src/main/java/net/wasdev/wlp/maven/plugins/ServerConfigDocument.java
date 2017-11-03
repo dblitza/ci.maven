@@ -164,8 +164,12 @@ public class ServerConfigDocument {
                 fProps = parseProperties(new FileInputStream(cfgDirFile));
                 props.putAll(fProps);
             } else if (bootstrapProp != null && !bootstrapProp.isEmpty()) {
-                while (bootstrapProp.values().remove(null))
-                    ;
+                Map.Entry<String,String> entry=bootstrapProp.entrySet().iterator().next();
+                String key= entry.getKey();
+                String value=entry.getValue();
+
+                 while (bootstrapProp.values().remove(null))
+                     ;
                 props.putAll(bootstrapProp);
             } else if (bootstrapFile.exists()) {
                 fProps = parseProperties(new FileInputStream(bootstrapFile));
